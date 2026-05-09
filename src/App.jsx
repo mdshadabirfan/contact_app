@@ -14,7 +14,7 @@ const App = () => {
     }
   };
   return (
-    <div className="bg-[#0E121C] text-white p-3">
+    <div className="bg-[#0E121C] text-white p-3 min-h-screen">
       <Navbar />
       <ContactForm addContact={addContact} />
 
