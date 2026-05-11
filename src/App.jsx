@@ -4,13 +4,17 @@ import ContactForm from "./components/ContactForm";
 import ContactCard from "./components/ContactCard";
 
 const App = () => {
-  const [allProfiles, setAllProfiles] = useState([]);
+  const [allProfiles, setAllProfiles] = useState(() => JSON.parse(localStorage.getItem("allLocalProfiles")) || []);;
   const addContact = (newProfile) => {
-    setAllProfiles((prev) => [...prev, newProfile]);
+    const updatedProfiles = [...allProfiles, newProfile];
+    setAllProfiles(updatedProfiles);
+    localStorage.setItem("allLocalProfiles", JSON.stringify(updatedProfiles));
   };
   const deleteContact = (id, fullName) => {
     if (window.confirm(`Are you sure you want to delete ${fullName}?`)) {
-      setAllProfiles((prev) => prev.filter((profile) => profile.id !== id));
+      const filteredProfiles = allProfiles.filter((profile) => profile.id !== id);
+      setAllProfiles(filteredProfiles);
+      localStorage.setItem("allLocalProfiles", JSON.stringify(filteredProfiles));
     }
   };
   return (

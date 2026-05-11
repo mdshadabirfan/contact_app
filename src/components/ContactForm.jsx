@@ -21,7 +21,7 @@ const ContactForm = ({ addContact }) => {
   };
   return (
     <form
-      className="p-12 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 xl:grid-cols-4 gap-4"
+      className="p-12 grid grid-cols-1 lg:grid-cols-4 gap-4"
       onSubmit={(e) => submitHandler(e)}
     >
       <input
